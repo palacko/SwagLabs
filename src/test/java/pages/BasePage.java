@@ -67,7 +67,7 @@ public class BasePage {
             wdWait.until(ExpectedConditions.visibilityOf(driver.findElement(by)));
 
             driver.findElement(by).clear();
-            driver.findElement(by).sendKeys();
+            driver.findElement(by).sendKeys(text);
 
             System.out.println("Typed text " + text + " into " + log);
         } catch (StaleElementReferenceException e) {
