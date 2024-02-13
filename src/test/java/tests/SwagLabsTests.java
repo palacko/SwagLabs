@@ -37,16 +37,16 @@ public class SwagLabsTests {
 
         ProductsPage productsPage = new ProductsPage(driver);
 
-        productsPage.addProduct("Sauce Labs Onesie");
-        productsPage.addProduct("Test.allTheThings() T-Shirt (Red)");
-        productsPage.removeProduct("Sauce Labs Onesie");
-        productsPage.removeProduct("Test.allTheThings() T-Shirt (Red)");
+        productsPage.addProducts("Sauce Labs Onesie", "Test.allTheThings() T-Shirt (Red)", "Sauce Labs Bike Light");
+        productsPage.removeProducts("Sauce Labs Onesie", "Test.allTheThings() T-Shirt (Red)", "Sauce Labs Bike Light");
 
         Thread.sleep(1000);
 
-        Assert.assertEquals(productsPage.getPrice("Proizvod 1"), "0");
-        Assert.assertEquals(productsPage.getPrice("Sauce Labs Onesie"), "$7.99");
+        String[] prices = productsPage.getPrices("Sauce Labs Onesie", "Test.allTheThings() T-Shirt (Red)", "Sauce Labs Bike Light");
+        String[] expectedPrices = {"$7.99","$15.99","$9.99"};
+
+        Assert.assertEquals(prices,expectedPrices);
 
         productsPage.openMenu();
-    }
+}
 }
